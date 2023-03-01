@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import { auth } from './firebase';
+import { selectUser } from './features/userSlice';
 import { logOut, login } from './features/userSlice';
 import './App.css';
 import HomeScreen from './components/HomeScreen';
+import Profile from './components/Profile';
 
 function App() {
-  const user = false;
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -20,11 +22,11 @@ function App() {
           })
         );
       } else {
-        dispatch(logOut);
+        dispatch(logOut());
       }
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
   return (
     <div className="App">
       <Router>
@@ -32,6 +34,7 @@ function App() {
           <Login />
         ) : (
           <Routes>
+            <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         )}
