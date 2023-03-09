@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import netLogo from '../assets/netLogo.png';
 import './Nav.css';
 const Nav = () => {
+  const params = useLocation();
   const navigate = useNavigate();
   const [show, handleShow] = useState(false);
   const transformNavbar = () => {
@@ -31,7 +32,12 @@ const Nav = () => {
         />
 
         <img
-          onClick={() => navigate('./profile')}
+          onClick={() => {
+            if (params.pathname === '/profile') {
+              return;
+            }
+            navigate('./profile');
+          }}
           className="nav-avator"
           src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
           alt="avator"

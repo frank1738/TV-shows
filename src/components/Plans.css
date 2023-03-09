@@ -1,0 +1,31 @@
+.plans-screen {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  opacity: 0.8;
+}
+
+.plans-screen:hover {
+  opacity: 1;
+}
+
+.plan-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e50914;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.current-btn {
+  background-color: gray;
+}
+
+.plans > p {
+  font-size: 1rem;
+  margin-top: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}

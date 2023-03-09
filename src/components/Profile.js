@@ -1,4 +1,5 @@
 import Nav from './Nav';
+import Plans from './Plans';
 import './Profile.css';
 import { selectUser } from '../features/userSlice';
 import { useSelector } from 'react-redux';
@@ -19,6 +20,7 @@ const Profile = () => {
             <h2>{user.email}</h2>
             <div className="profile-plans">
               <h3>Plans</h3>
+              <Plans />
               <button onClick={() => auth.signOut()} className="sign-out-btn">
                 Sign Out
               </button>
